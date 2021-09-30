@@ -1,11 +1,11 @@
 class RestaurantPizzasController < ApplicationController
 
-    def index
-        render json: RestaurantPizzas.all
-    end
-
-    def show
-        menu = RestaurantPizzas.find(params[:id])
-        render json: menu, include: :
+    def create 
+        restaurant_pizza = RestaurantPizza.create(params.permit(:pizza_id, :restaurant_id, :price))
+        if restaurant_pizza 
+            render json: restaurant_pizza.pizza.to_json, status: :created
+        else
+            render json: {errors: "validation errors"}, status: :unprocessable_entity  
+        end
     end
 end
