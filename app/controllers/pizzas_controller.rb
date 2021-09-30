@@ -1,11 +1,11 @@
 class PizzasController < ApplicationController
 
     def index
-        render json: Pizzas.all
+        render json: Pizza.all, status: 200
     end
 
     def show
-        pizza = Pizzas.find(params[:id])
+        pizza = Pizza.find(params[:id])
         render json: pizza 
     end
 end

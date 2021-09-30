@@ -1,4 +1,4 @@
 class Restaurant < ApplicationRecord
-    has_many :restaurant_pizzas, dependent: :destroy
-    has_many :pizzas, through: restaurant_pizzas
+    has_many :restaurant_pizza, dependent: :destroy
+    has_many :pizza, through: :restaurant_pizza
 end
